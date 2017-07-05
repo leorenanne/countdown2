@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import '../stylesheets/App.css';
+import '../../public/stylesheets/App.css';
 import serializeForm from 'form-serialize';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
