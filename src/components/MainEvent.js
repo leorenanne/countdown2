@@ -10,8 +10,8 @@ class MainEvent extends React.Component {
     date: PropTypes.string
   };
   static defaultProps = {
-    mainEvent: 'Calendar',
-    date: null
+    mainEvent: 'Today',
+    date: (new Date()).toJSON()
   }
 
   render() {

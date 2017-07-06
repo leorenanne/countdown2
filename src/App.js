@@ -2,30 +2,32 @@ import React, { Component } from 'react';
 
 import '../public/stylesheets/App.css';
 import MainEvent from './components/MainEvent'
+import Events from './components/Events'
 
 class App extends Component {
   constructor(){
     super();
 
     this.state = {
-      mainEvent: undefined,
-      date: undefined
+      name: undefined,
+      date: undefined,
     }
   }
 
   componentDidMount() {
-    const date = localStorage.getItem("mainEventDate");
-    this.setState({date: date });
-    
-    const mainNameLocal = localStorage.getItem("mainEventName");
-    var mainEventName = mainNameLocal? mainNameLocal: 'Event';
-    this.setState({mainEvent: mainEventName});
+    var mainEvent = localStorage.getItem("mainEvent") ? 
+                    JSON.parse(localStorage.getItem("mainEvent")) :
+                    {name: "Today", date: (new Date()).toJSON() };
+
+    this.setState({date: mainEvent.date });
+    this.setState({name: mainEvent.name });
   }
 
   render() {
     return (
       <div>
-        <MainEvent mainEvent={this.state.mainEvent} date={this.state.date}/>
+        <MainEvent mainEvent={this.state.name} date={this.state.date}/>
+        <Events />
       </div>
     );
   }
